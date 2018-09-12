@@ -6,9 +6,19 @@ console.log('hello')
 const cnv = document.querySelector('#cnv')
 const ctx = cnv.getContext('2d')
 
-ctx.fillStyle = '#ddd'
-ctx.fillRect(0, 0, 608, 680)
+window.onload = start
 
-// draimagec
-const img = document.getElementById('img1')
-ctx.drawImage(img, 10, 10, 200, 100)
+function start() {
+    ctx.fillStyle = '#ddd'
+    ctx.fillRect(0, 0, 608, 680)
+
+    drawImage('./images/1.png', 0, 0, 50, 50)
+    
+}
+
+function drawImage(dataUrl, x, y, w, h) {
+    const img = new Image()
+    img.src = dataUrl
+    img.onload = () => {
+        ctx.drawImage(img, x, y, w, h)
+    }
